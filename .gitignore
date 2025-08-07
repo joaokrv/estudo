@@ -1,0 +1,13 @@
+# Para projetos Java
+/bin/
+/build/
+/out/
+/target/
+*.idea/
+*.vscode/
+
+# Para projetos Node.js/JavaScript
+node_modules/
+package-lock.json
+.env
+dist/

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="jpa">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <mapping-file>META-INF/consultas.xml</mapping-file>
+
+        <class>modelo.basico.Usuario</class>
+        <class>modelo.basico.Produto</class>
+        <class>modelo.umpraum.Assento</class>
+        <class>modelo.umpraum.Cliente</class>
+        <class>modelo.umpramuitos.Produto</class>
+        <class>modelo.umpramuitos.Pedido</class>
+        <class>modelo.umpramuitos.ItemPedido</class>
+        <class>modelo.muitospramuitos.Sobrinho</class>
+        <class>modelo.muitospramuitos.Tio</class>
+        <class>modelo.muitospramuitos.Filme</class>
+        <class>modelo.muitospramuitos.Ator</class>
+        <class>modelo.composicao.Endereco</class>
+        <class>modelo.composicao.Fornecedor</class>
+        <class>modelo.composicao.Funcionario</class>
+        <class>modelo.heranca.Professor</class>
+        <class>modelo.heranca.Pessoa</class>
+        <class>modelo.heranca.Aluno</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/jpa_curso"/>
+            <property name="javax.persistence.jdbc.user"
+                      value="root"/>
+            <property name="javax.persistence.jdbc.password"
+                      value="admin123"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
