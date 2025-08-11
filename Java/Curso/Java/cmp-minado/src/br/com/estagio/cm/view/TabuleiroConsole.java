@@ -15,7 +15,6 @@ public class TabuleiroConsole {
 
     public TabuleiroConsole (Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
-
         execJogo();
     }
 

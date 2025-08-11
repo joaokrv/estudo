@@ -1,0 +1,102 @@
+<div wm-slider>
+        <p>
+            <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Imagem Cod3r" width="350" height="210">
+        </p>
+        <p>
+            <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Gif Cod3r" width="350">
+        </p>
+        <p class="circular">
+            <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Png Cod3r" width="350">
+        </p>
+        <p class="texto">
+            <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar Cod3r" width="120" heigth="70" align="left">
+            Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
+        </p>
+        <p class="cidade"></p>
+        <p>
+            <picture>
+                <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width: 400px)">
+                <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="logo">
+            </picture>
+        </p>
+</div>
+
+<script src="script.js"></script>
+
+<style>
+    body {
+        overflow-x: hidden;
+        background-color: #caffeb;
+    }
+
+    p {
+        position: absolute;
+        display: none; 
+    }
+
+    .circular {
+        background-color: #caffeb;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 100%;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<!-- 
+<script>
+
+    function slider() {
+        const slides = document.querySelectorAll('[wm-slider] > p');
+        const array = Array.from(slides);
+        printSlides(array, array[0]);
+    }
+
+    function printSlides(slides, slide) {
+        slide.style.display = "block";
+
+        const inicio = innerWidth;
+        const fim = -slide.clientWidth;
+        slide.style.left = `${inicio}px`;
+
+        moverSlides(slide, slides, inicio, fim, 10)
+    }   
+
+    function moverSlides(slide, slides, inicio, final, passo) {
+
+        const novoInicio = inicio - passo;
+
+        if (novoInicio > final) {
+            slide.style.left = `${novoInicio}px`;
+            setTimeout(() => moverSlides(slide, slides, novoInicio, final, passo), 30);
+        } else {
+            slide.style.display= "none";
+            printSlides(slides, getProximo(slides, slide));
+        }
+    }
+
+    function getProximo(slides, slideAtual) {
+        let index = 0;
+        index = slides.indexOf(slideAtual);
+        index++;
+
+        if (index >= slides.length) {
+            return slides[0];
+        } else {
+            return slides[index];
+        }
+    }
+
+    slider();
+</script> -->

@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(220, 235, 235);
+}
+h1 {
+    font-family: 'Times New Roman', Timesserif;
+    font-size: 36px;
+}
+.fundoEscuro {
+    background-color: rgb(151, 145, 145);
+    color: aliceblue;
+}
+.negrito {
+    font-weight: bold;
+}
+#titulo1 {
+    font-size: 50px;
+    font-weight: bolder;
+}

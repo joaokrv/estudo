@@ -72,7 +72,10 @@ public class Tabuleiro {
         do {
             int aleatorio = (int) (Math.random() * campos.size());
             campos.get(aleatorio).minarCampo();
-            minasArmdas = campos.stream().filter(minado).count();
+            minasArmdas = campos.stream()
+                    .filter(minado)
+                    .count();
+
         } while (minasArmdas < getMinas());
     }
 

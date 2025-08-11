@@ -1,0 +1,74 @@
+<video id="meuVideo" width="750" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag vídeo.
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div>
+        <span id="duracao-video">Carregando...</span>
+    </div>
+</div> 
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 700px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: rgb(42, 0, 82);
+        color: aliceblue;
+        height: 100%;
+        text-align: center;
+        width: 100%;
+    }
+
+    
+</style>
+
+<script>
+function iniciar() {
+    playVideo();
+    pauseVideo();
+    progresso();
+}
+
+function playVideo() {
+  const botaoPlay = document.querySelector('[wm-play="meuVideo"]');
+  const video = document.getElementById('meuVideo');
+
+  botaoPlay.addEventListener("click", () => {
+    video.play();
+  });
+}
+
+function pauseVideo() {
+  const botaoPause = document.querySelector('[wm-pause="meuVideo"]');
+  const video = document.getElementById('meuVideo');
+
+  botaoPause.addEventListener("click", () => {
+    video.pause();
+  });
+}
+
+function progresso() {
+    const barraProgressoInterna = document.querySelector('.progresso > div');
+    const video = document.getElementById('meuVideo');  
+    const duracaoSpan = document.getElementById('duracao-video');
+
+    video.addEventListener('timeupdate', () => {
+        const porcentagem = ((video.currentTime / video.duration) * 100);
+        barraProgressoInterna.style.width = `${porcentagem}%`;
+        duracaoSpan.innerText = porcentagem.toFixed(2) + " %";
+    })
+}
+
+iniciar();
+</script>

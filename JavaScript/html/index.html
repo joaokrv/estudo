@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios HTML5</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="exercicios/exercicio03/lista.css">
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href ex-nav="exercicios/exercicio02/texto.html">Exercício 2 - Textos 1</a></li>
+            <li><a href ex-nav="exercicios/exercicio02/texto2.html">Exercício 2 - Textos 2</a></li>
+            <li><a href ex-nav="exercicios/exercicio03/listas.html">Exercício 3 - Listas</a></li>
+            <li><a href ex-nav="exercicios/exercicio04/links.html">Exercício 4 - Links</a></li>
+            <li><a href ex-nav="exercicios/exercicio05/tabela.html">Exercício 5 - Tabelas</a></li>
+            <li><a href ex-nav="exercicios/exercicio06/form.html">Exercício 6 - Form</a></li>
+            <li><a href="exercicios/exercicio07/imagens.html" target="_blank">Exercício 7 - Imagens</a></li>
+            </ul>
+    
+    </nav>
+
+    <section id="conteudo">
+        </section>
+
+    <footer>
+        Web Moderno
+    </footer>
+
+    <script>
+        function inicializarArvoreDeListas() {
+            const titulos = document.querySelectorAll('#conteudo .titulo-pasta');
+            if (!titulos.length) return;
+
+            titulos.forEach(titulo => {
+                if (titulo.dataset.inicializado) return;
+                titulo.dataset.inicializado = 'true';
+
+                const nomeOriginal = titulo.innerText.trim();
+                const submenu = titulo.nextElementSibling;
+
+                if (submenu && submenu.tagName === 'UL') {
+                    titulo.innerHTML = `&#x1F4C1; ${nomeOriginal}`;
+
+                    titulo.addEventListener('click', () => {
+                        submenu.classList.toggle('ativo');
+                        if (submenu.classList.contains('ativo')) {
+                            titulo.innerHTML = `&#x1F4C2; ${nomeOriginal}`;
+                        } else {
+                            titulo.innerHTML = `&#x1F4C1; ${nomeOriginal}`;
+                        }
+                    });
+                } 
+                else {
+                    titulo.innerHTML = `&#x1F4C4; ${nomeOriginal}`;
+                    titulo.style.cursor = 'default';
+                }
+            });
+        }
+
+        document.querySelectorAll('[ex-nav]')
+            .forEach(link => {
+                const conteudo = document.getElementById('conteudo');
+
+                link.onclick = function (e) {
+                    e.preventDefault();
+                    fetch(link.getAttribute('ex-nav'))
+                        .then(resp => resp.text())
+                        .then(html => {
+                            conteudo.innerHTML = html;
+                            inicializarArvoreDeListas();
+                        })
+                }
+            })
+    </script>
+</body>
+
+</html>
