@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Especificidade CSS</title>
+    <style>
+      /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+
+      /*  
+            1. Regra com !important -> EVITAR
+            2. Seletores especificos
+            3. Último a ser processado tem preferencia
+      */
+
+      body {
+        background-color: lightcyan;
+      }
+
+      p {
+        background: lightgray;
+      }
+
+      /* Mais especifico que p */
+      .observacao {
+        background-color: #0ff;
+        border: dashed 2px;
+        padding: 20px !important; /* burla a especificidade */
+        font-size: 30px;
+      }
+
+      /* Mais especifico a classe*/
+      p.observacao {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        padding: 2px;
+        background: linear-gradient(
+          to right,
+          rgb(116, 13, 185),
+          rgb(143, 223, 255)
+        );
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="observacao">Olha essa observação!!!!</p>
+  </body>
+</html>

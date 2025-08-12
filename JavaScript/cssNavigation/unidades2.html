@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Unidades #02</title>
+    <style>
+      :root {
+        --federal-blue: #03045eff;
+        --marian-blue: #023e8aff;
+        --honolulu-blue: #0077b6ff;
+        --blue-green: #0096c7ff;
+        --pacific-cyan: #00b4d8ff;
+        --vivid-sky-blue: #48cae4ff;
+        --non-photo-blue: #90e0efff;
+        --non-photo-blue-2: #ade8f4ff;
+        --light-cyan: #caf0f8ff;
+      }
+
+      body {
+        background: linear-gradient(
+          to right,
+          var(--marian-blue),
+          var(--honolulu-blue),
+          var(--blue-green),
+          var(--pacific-cyan),
+          var(--vivid-sky-blue),
+          var(--non-photo-blue),
+          var(--non-photo-blue-2),
+          var(--light-cyan)
+        );
+      }
+
+      .fora {
+        position: relative;
+        background-color: lightblue;
+        width: 400px;
+        height: 400px;
+        padding: 50px;
+        margin: 5px;
+      }
+
+      .dentro {
+        position: static; /* conteudo */
+        position: relative; /* conteudo */
+        position: absolute; /* conteudo + padding */
+        position: fixed; /* viewport */
+        background-color: lightyellow;
+        height: 100px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fora">
+      <div class="dentro"></div>
+    </div>
+  </body>
+</html>

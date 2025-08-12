@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Anatomia CSS</title>
+    <style>
+      body {
+        background-color: #c2c2c2;
+      }
+
+      .selector {
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 30px;
+        text-align: center;
+        border: solid 2px black;
+        /* função */
+        width: calc(100% - 100px);
+        background-color: rgb(138, 138, 138);
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      /* pesudo-classes */
+      .selector:hover {
+        color: black;
+        background-color: azure;
+      }
+
+      /* pesudo-elemnto */
+      .selector::first-letter {
+        font-weight: bolder;
+      }
+
+      /* manter consistencia de padrao 
+      camelCase ou dash-case */
+    </style>
+  </head>
+
+  <body>
+    <div class="selector">Conteúdo</div>
+  </body>
+</html>

@@ -9,7 +9,6 @@ Este diretório reúne meus estudos, exercícios, anotações e exemplos prátic
 
 - **fundamentos/**  
   Exemplos e códigos explicando os principais conceitos do JavaScript, como:
-
   - Declaração de variáveis (`var`, `let`, `const`)
   - Tipos de dados primitivos e objetos
   - Operadores aritméticos, lógicos e relacionais
@@ -27,6 +26,9 @@ Este diretório reúne meus estudos, exercícios, anotações e exemplos prátic
   - Utilização de pacotes externos (ex: `lodash`, `axios`)
   - Criação de servidores HTTP básicos
   - Integração com APIs externas
+
+- **html/**  
+  Exemplos de HTML e CSS, exercícios de estruturação de páginas, listas, tabelas, formulários e integração com JavaScript.
 
 ## 📝 Conteúdos Abordados
 

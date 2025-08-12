@@ -1,14 +1,14 @@
 # Estudos em Java
 
-Este diretório reúne meus estudos, projetos, exemplos e exercícios desenvolvidos durante o curso de Java. O objetivo é consolidar o aprendizado dos principais conceitos da linguagem, desde fundamentos até tópicos avançados, além de servir como referência para consultas futuras e para a construção de projetos práticos.
+Este diretório reúne meus estudos, projetos, exemplos e exercícios desenvolvidos durante o curso de Java. O objetivo é consolidar o aprendizado dos principais conceitos da linguagem, desde fundamentos até tópicos avançados, além de servir como referência para consultas futuras.
 
 ## 📂 Estrutura das Pastas
 
 - **App/**  
-  Projetos modulares e exemplos de aplicações Java, organizados por funcionalidades. Aqui você encontrará projetos completos que simulam aplicações reais, como sistemas financeiros, calculadoras, jogos e outros exemplos práticos que integram diversos conceitos da linguagem.
+  Projetos modulares e exemplos de aplicações Java, organizados por funcionalidades. Inclui sistemas financeiros, calculadoras, jogos e outros exemplos práticos.
 
 - **Curso/**  
-  Exercícios, exemplos e projetos organizados conforme os módulos do curso de Java. Esta pasta contém códigos que abordam desde os fundamentos da linguagem até tópicos intermediários e avançados, como:
+  Exercícios, exemplos e projetos organizados conforme os módulos do curso de Java. Aborda:
   - Sintaxe básica, variáveis e operadores
   - Estruturas de controle (if, switch, loops)
   - Orientação a objetos (classes, herança, polimorfismo, interfaces)
@@ -19,7 +19,7 @@ Este diretório reúne meus estudos, projetos, exemplos e exercícios desenvolvi
   - Testes automatizados com JUnit
 
 - **sb-exercicios/**  
-  Projetos e exercícios práticos utilizando o framework Spring Boot. Aqui estão exemplos de APIs REST, integração com bancos de dados, criação de endpoints, configuração de projetos Spring e outros tópicos relacionados ao desenvolvimento web com Java.
+  Projetos e exercícios práticos utilizando o framework Spring Boot. Exemplos de APIs REST, integração com bancos de dados, criação de endpoints e configuração de projetos Spring.
 
 ## 📝 Conteúdos Abordados
 
@@ -42,4 +42,4 @@ Este diretório reúne meus estudos, projetos, exemplos e exercícios desenvolvi
 
 ---
 
-Este material está em constante atualização conforme avanço nos estudos. Caso tenha sugestões ou queira contribuir, fique à vontade para abrir uma issue ou pull
+Este material está em constante atualização conforme avanço nos estudos. Caso tenha sugestões ou queira contribuir, fique à vontade para abrir uma issue ou pull request.
