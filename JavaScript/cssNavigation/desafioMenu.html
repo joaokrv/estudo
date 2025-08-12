@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desafio Menu</title>
     <link
       href="https://fonts.googleapis.com/css?family=Oswald"
@@ -13,39 +14,79 @@
     />
     <style>
       body {
-        background-color: rgb(206, 206, 206);
+        background-color: rgb(187, 187, 187);
         margin: 0;
+        font-family: "Oswald", sans-serif; /* Adicionei a fonte para melhor visualização */
       }
 
-      header {
-        background-color: #3b3b3b;
-        width: 100%;
-      }
-
-      a img {
-        width: 290px;
-        height: 60px;
-      }
-
-      header.cabecalho {
-        border-bottom: solid 4px rgb(57, 57, 255);
+      a {
         text-decoration: none;
+        color: #eee;
       }
 
-      button.menu-toogle {
+      .logo img {
+        width: 200px;
+        height: auto;
+      }
+
+      .cabecalho {
+        background-color: #292929;
+        border-bottom: solid 4px rgb(57, 57, 255);
+        align-items: center;
+        padding: 10px 20px;
+        padding: 10px 20px;
+      }
+
+      .menu ul {
+        display: flex;
+        list-style: none;
+        text-decoration: none;
+        margin: 0;
+        padding: 0 20px;
+      }
+
+      .menu li {
+        margin: 0 10px;
+      }
+
+      .menu-toggle {
         display: none;
       }
 
-      .menu {
-      }
-
       .autenticacao {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 25px;
       }
 
-      .botao {
+      .botao.destaque {
+        background-color: rgb(255, 0, 0);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 15px;
       }
 
-      .destaque {
+      @media (max-width: 768px) {
+        .cabecalho {
+          justify-content: space-between;
+        }
+
+        .menu {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          color: black;
+          background-color: rgb(231, 231, 231);
+        }
+
+        .autenticacao {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -82,8 +123,6 @@
       </aside>
     </header>
 
-    <script>
-      // ...
-    </script>
+    <script></script>
   </body>
 </html>
