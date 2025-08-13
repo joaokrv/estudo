@@ -51,11 +51,7 @@
         padding: 15px 0px;
       }
 
-      .menu li:hover {
-        background-color: #7e308d;
-        border-radius: 5px;
-      }
-
+      .menu li:hover,
       .menu li.ativo {
         background-color: #7e308d;
         border-radius: 5px;
@@ -221,6 +217,7 @@
         icon.classList.toggle("fa-times");
       }
 
+      menu.addEventListener("click", abrirMenuToggle);
       btnToggle.addEventListener("click", abrirMenuToggle);
       window.addEventListener("DOMContentLoaded", atualizarMenu);
       window.addEventListener("hashchange", atualizarMenu);
