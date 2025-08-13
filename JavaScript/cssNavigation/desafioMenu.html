@@ -16,7 +16,15 @@
       body {
         background-color: rgb(187, 187, 187);
         margin: 0;
-        font-family: "Oswald", sans-serif; /* Adicionei a fonte para melhor visualização */
+        font-family: "Oswald", sans-serif;
+      }
+
+      .cabecalho {
+        background-color: #292929;
+        border-bottom: solid 4px rgb(57, 57, 255);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
       }
 
       a {
@@ -29,24 +37,21 @@
         height: auto;
       }
 
-      .cabecalho {
-        background-color: #292929;
-        border-bottom: solid 4px rgb(57, 57, 255);
-        align-items: center;
-        padding: 10px 20px;
-        padding: 10px 20px;
-      }
-
       .menu ul {
         display: flex;
         list-style: none;
         text-decoration: none;
         margin: 0;
-        padding: 0 20px;
+        padding: 10px 20px;
       }
 
       .menu li {
-        margin: 0 10px;
+        padding: 15px;
+      }
+
+      .menu li.ativo {
+        background-color: #7e308d;
+        border-radius: 5px;
       }
 
       .menu-toggle {
@@ -55,6 +60,7 @@
 
       .autenticacao {
         margin-left: auto;
+        margin-right: 15px;
         display: flex;
         align-items: center;
         gap: 25px;
@@ -67,21 +73,69 @@
         border-radius: 15px;
       }
 
-      @media (max-width: 768px) {
-        .cabecalho {
-          justify-content: space-between;
+      @media (max-width: 700px) {
+        .menu-toggle {
+          font-size: 16px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 10px 20px;
+          margin: 20px;
+          color: black;
+          background-color: rgb(231, 231, 231);
+          border: none;
+          border-radius: 10%;
+          cursor: pointer;
+          box-shadow: 0px 1px 1px 1px rgb(255, 255, 255),
+            0 0 5px rgba(255, 255, 255, 0.8);
+          transition: all 0.2s ease-out;
+        }
+
+        .menu-toggle:active {
+          box-shadow: none;
+          transform: translateY(1px);
         }
 
         .menu {
-          display: none;
+          display: flex;
+          position: absolute;
+          top: 79px;
+          left: 0;
+          width: 100%;
+          background-color: #3f3f3f;
+          transition: transform 0.3s ease-in-out;
+          transform: translateY(-150%);
         }
 
-        .menu-toggle {
-          display: flex;
-          align-items: center;
-          padding: 10px 20px;
-          color: black;
-          background-color: rgb(231, 231, 231);
+        .menu.aberto {
+          transform: translateY(0);
+        }
+
+        .menu ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+
+        .menu li {
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          border-bottom: 1px solid #555;
+        }
+
+        .menu li a {
+          display: block;
+          padding: 20px;
+          transition: background-color 0.2s;
+        }
+
+        .menu li a:hover {
+          background-color: #4f4f4f;
+        }
+
+        .cabecalho {
+          justify-content: space-between;
         }
 
         .autenticacao {
@@ -101,7 +155,7 @@
       <button class="menu-toggle">
         <i class="fa fa-lg fa-bars"></i>
       </button>
-      <nav class="menu">
+      <nav class="menu popup">
         <ul>
           <li>
             <a href="#inicio">Início</a>
@@ -123,6 +177,46 @@
       </aside>
     </header>
 
-    <script></script>
+    <script>
+      function atualizarMenu() {
+        const hashAtual = window.location.hash;
+        const linksMenu = document.querySelectorAll(".menu li a");
+
+        linksMenu.forEach((li) => {
+          li.parentElement.classList.remove("ativo");
+        });
+
+        if (!hashAtual) {
+          const linkInicio = document.querySelector('.menu a[href="#inicio"]');
+          if (linkInicio) linkInicio.parentElement.classList.add("ativo");
+          return;
+        }
+
+        console.log(hashAtual);
+
+        const linkAtivo = document.querySelector(
+          `.menu a[href="${hashAtual}"]`
+        );
+
+        if (linkAtivo) {
+          linkAtivo.parentElement.classList.add("ativo");
+        }
+      }
+
+      const btnToggle = document.querySelector(".menu-toggle");
+      const menu = document.querySelector(".menu");
+
+      function abrirMenuToggle() {
+        menu.classList.toggle("aberto");
+
+        const icon = btnToggle.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-times");
+      }
+
+      btnToggle.addEventListener("click", abrirMenuToggle);
+      window.addEventListener("DOMContentLoaded", atualizarMenu);
+      window.addEventListener("hashchange", atualizarMenu);
+    </script>
   </body>
 </html>
