@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+}
+
+[wm-flappy] {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 850px;
+    height: 500px;
+    background-color: deepskyblue;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.par-de-canos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 225px;
+}
+
+.cano {
+    position: relative;
+    width: 80px;
+    height: 200px;
+    background: linear-gradient(
+        90deg,
+        #3a8f1c 0%,
+        #5dbf2e 25%,
+        #8be44c 50%,
+        #5dbf2e 75%,
+        #3a8f1c 100%
+    );
+    border: 2px solid #2d6b13; 
+}
+
+.topo-cano-superior,
+.topo-cano-inferior {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 25px;
+    background: linear-gradient(
+        90deg,
+        #3a8f1c 0%,
+        #5dbf2e 25%,
+        #8be44c 50%,
+        #5dbf2e 75%,
+        #3a8f1c 100%
+    );
+    border: 2px solid #2d6b13;
+    top: auto;
+    bottom: auto;
+}
+
+.topo-cano-superior {
+    top: 100%;
+}
+
+.topo-cano-inferior {
+    bottom: 100%;
+}
+
+.passaro {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: yellow;
+    border: 2px solid black;
+}

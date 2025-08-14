@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+  <body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>
+      const elemento1 = document.getElementById("primeiro");
+      elemento1.classList.add("destaque");
+
+      const divs = document.getElementsByTagName("div");
+      Array.from(divs).forEach((elemento) =>
+        elemento.classList.remove("destaque")
+      );
+
+      const divsArray = [...divs];
+      divsArray.forEach((elemento) => elemento.classList.add("destaque"));
+
+      const ultimosElemntos = document.getElementsByClassName("ultimo");
+      for (let e of ultimosElemntos) {
+        e.classList.remove("destaque");
+      }
+    </script>
+  </body>
+</html>
