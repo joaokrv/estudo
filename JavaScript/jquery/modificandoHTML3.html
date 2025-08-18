@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modificando HTML #03</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+    <script src="js/jquery.js"></script>
+  </head>
+
+  <body class="conteudo exercicio">
+    <h1>Modificando HTML #03</h1>
+    <div id="conteudo"></div>
+
+    <script>
+      $(document).ready(function () {
+        const pessoas = [
+          { nome: "Ana", nota: 9.1 },
+          { nome: "Bianca", nota: 8.4 },
+          { nome: "Carlos", nota: 7.6 },
+          { nome: "Julia", nota: 9.7 },
+        ];
+
+        $("#conteudo").append(
+          "<table>" +
+            "<thead>" +
+            "<tr>" +
+            "<th>Nome</th>" +
+            "<th>Nota</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody></tbody>" +
+            "</table>"
+        );
+
+        $.each(pessoas, function (i, pessoa) {
+          $("tbody").append(
+            "<tr><td>" + pessoa.nome + "</td><td>" + pessoa.nota + "</td></tr>"
+          );
+        });
+
+        $("th, td").css({
+          padding: "10px 30px",
+          "text-align": "center",
+        });
+
+        $("th").css({
+          "background-color": "#8311b8",
+          color: "#fff",
+        });
+
+        $("table").css({
+          "border-collapse": "separate",
+          "font-family": "Arial",
+          margin: "20px auto",
+          "border-spacing": "30px",
+          "min-width": "300px",
+          width: "fit-content",
+        });
+      });
+    </script>
+  </body>
+</html>
