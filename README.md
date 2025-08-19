@@ -2,31 +2,27 @@
 
 Este repositório centraliza meus estudos em programação e tecnologia. Aqui você encontrará materiais, exercícios, projetos e anotações desenvolvidos durante cursos, facilitando o acompanhamento da evolução e servindo como referência futura.
 
-## 📚 Cursos
+## 📚 Cursos e Conteúdos
 
-- **Java**: Estrutura de projetos, exemplos de orientação a objetos, módulos, exercícios e aplicações práticas, seguindo o curso da Udemy.
-- **JavaScript**: Fundamentos, exercícios, desafios e exemplos práticos, seguindo o curso da Udemy.
+- **Java**: Estrutura de projetos, exemplos de orientação a objetos, módulos, exercícios e aplicações práticas.
+- **JavaScript**: Fundamentos, exercícios, desafios, integração com HTML/CSS, AJAX, jQuery, Node.js e SPA.
+- **AngularJS**: Exemplos práticos, diretivas, validação de formulários, integração com Bootstrap e Angular Messages.
 
 Novos cursos e linguagens serão adicionados conforme avanço nos estudos.
 
 ## 🗂️ Estrutura do Repositório
 
 ```
-Estudos/
+Estudo/
 ├── Java/
-│   ├── App/
-│   ├── Curso/
-│   └── sb-exercicios/
 ├── JavaScript/
-│   ├── exercicios/
-│   ├── fundamentos/
-│   └── ...
+├── Angular/
 └── README.md
 ```
 
 - **Java/**: Projetos, módulos e exercícios relacionados ao curso de Java.
-- **JavaScript/**: Exercícios, desafios e exemplos do curso de JavaScript.
-- Cada pasta representa um curso ou linguagem diferente.
+- **JavaScript/**: Exercícios, desafios, exemplos práticos, integração com HTML/CSS, AJAX, jQuery e Node.js.
+- **Angular/**: Projetos e exemplos com AngularJS, incluindo integração com Bootstrap.
 
 ## 🚀 Como utilizar
 
