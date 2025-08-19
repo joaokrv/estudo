@@ -27,6 +27,19 @@
       $("#div1").one("mouseenter", (e) => alert("aviso teste"));
 
       $("#div1").dblclick((e) => $("#div1").fadeOut(2000).fadeIn(2000));
+
+      $(window).resize(function (e) {
+        const l = $(window).width();
+        const a = $(window).height();
+
+        $("#resultado1").html("Largura: " + l + " e Altura: " + a);
+      });
+
+      $(":input").select((e) => {
+        const inicio = e.target.selectionStart;
+        const fim = e.target.selectionEnd;
+        $("#resultado2").html(e.target.value.substring(inicio, fim));
+      });
     </script>
   </body>
 </html>
