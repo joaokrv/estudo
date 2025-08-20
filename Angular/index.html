@@ -11,132 +11,20 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="lib/bootstrap/css/bootstrap.css"
+      href="app/lib/bootstrap/css/bootstrap.css"
     />
-    <style>
-      .jumbotron {
-        text-align: center;
-        width: 800px;
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .table {
-        margin-top: 30px;
-      }
-
-      .table tr {
-        padding: 0.75em;
-      }
-
-      .btn,
-      .form-control,
-      .alert {
-        margin-top: 20px;
-      }
-
-      .selecionado {
-        background-color: aquamarine;
-      }
-
-      .negrito {
-        font-weight: bolder;
-      }
-    </style>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-messages.js"></script>
-    <script>
-      angular.module("listaTelefonica", ["ngMessages"]);
-      angular
-        .module("listaTelefonica")
-        .controller("listaTelefonicaController", function ($scope) {
-          // $scope -> faz a ponte entre eles
-
-          $scope.app = "Lista Telefônica";
-
-          $scope.operadoras = [
-            { nome: "Vivo", codigo: "15", categoria: "Celular" },
-            { nome: "Claro", codigo: "21", categoria: "Celular" },
-            { nome: "TIM", codigo: "41", categoria: "Celular" },
-            { nome: "Oi", codigo: "14", categoria: "Celular" },
-            { nome: "Vivo Fixo", codigo: "15", categoria: "Fixo" },
-            { nome: "Claro Fixo (NET)", codigo: "21", categoria: "Fixo" },
-            { nome: "Oi Fixo", codigo: "31", categoria: "Fixo" },
-          ];
-
-          $scope.contatos = [
-            {
-              nome: "Pedro",
-              telefone: "(11) 98877-1234",
-              cor: "plum",
-              data: new Date(),
-              operadora: $scope.operadoras[0],
-            },
-            {
-              nome: "João",
-              telefone: "(21) 99988-5678",
-              cor: "red",
-              data: new Date(),
-              operadora: $scope.operadoras[1],
-            },
-            {
-              nome: "Lucas",
-              telefone: "(31) 98765-4321",
-              cor: "blue",
-              data: new Date(),
-              operadora: $scope.operadoras[2],
-            },
-            {
-              nome: "Moisés",
-              telefone: "(61) 99123-8765",
-              cor: "green",
-              data: new Date(),
-              operadora: $scope.operadoras[3],
-            },
-          ];
-
-          $scope.addContato = (contato) => {
-            $scope.contatos.push(angular.copy(contato));
-            delete $scope.contato;
-            $scope.contatoForm.$setPristine(true);
-          };
-
-          $scope.removeContato = (contatos) => {
-            $scope.contatos = contatos.filter((contato) => {
-              if (!contato.selecionado) {
-                return contato;
-              } else {
-                return null;
-              }
-            });
-          };
-
-          $scope.isContatoSelecionado = (contatos) => {
-            return contatos.some((contato) => {
-              return contato.selecionado;
-            });
-          };
-
-          $scope.classe1 = "selecionado";
-          $scope.classe2 = "negrito";
-        })
-        .directive("telefoneMask", function () {
-          return {
-            restrict: "A",
-            require: "ngModel",
-            link: function (scope, element, attrs, ngModelCtrl) {
-              element.on("input", function () {
-                let value = element.val().replace(/\D/g, "");
-                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
-                value = value.replace(/(\d{5})(\d)/, "$1-$2");
-                ngModelCtrl.$setViewValue(value);
-                ngModelCtrl.$render();
-              });
-            },
-          };
-        });
-    </script>
+    <link rel="stylesheet" href="app/css/app.css" />
+    <script src="app/lib/angular/angular.js"></script>
+    <script src="app/lib/angular/angular-locale_pt-br.js"></script>
+    <script src="app/lib/angular/angular-messages.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/controllers/listaTelefonicaController.js"></script>
+    <script src="app/js/directives/telefoneMaskDirective.js"></script>
+    <script src="app/js/services/contatosAPIService.js"></script>
+    <script src="app/js/services/operadorasAPIService.js"></script>
+    <script src="app/js/services/serialGeneratorService.js"></script>
+    <script src="app/js/constant/configValue.js"></script>
+    <script src="app/js/config/serialGeneratorConfig.js"></script>
   </head>
   <body ng-controller="listaTelefonicaController">
     <div class="jumbotron">
@@ -149,22 +37,38 @@
         class="form-control"
       />
 
+      <div
+        class="alert alert-danger"
+        ng-show="message"
+        style="white-space: pre-line"
+      >
+        {{ message }}
+      </div>
+
       <table ng-show="contatos.length > 0" class="table">
         <tr>
           <th></th>
-          <th>Nome</th>
+          <th><a href="" ng-click="ordenarPor('id')">Serial</a></th>
+          <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
           <th>Código</th>
-          <th>Telefone</th>
+          <th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
           <th>Operadora</th>
-          <th>Data</th>
+          <th><a href="" ng-click="ordenarPor('data')">Data</a></th>
           <th></th>
         </tr>
         <tr
           ng-class="{'selecionado negrito': contato.selecionado}"
-          ng-repeat="contato in contatos | filter:{nome: criterioBusca}"
+          ng-repeat="contato in contatos | filter:{nome: criterioBusca} | orderBy:criterioOrdenacao:direcaoOrdenacao"
         >
           <td><input type="checkbox" ng-model="contato.selecionado" /></td>
-          <td>{{contato.nome | uppercase}}</td>
+          <td>
+            {{ serialExibicao(contato) }}
+            <a href="" ng-click="toggleSerial(contato)">
+              <span ng-if="!contato.serialExpandido">...</span>
+              <span ng-if="contato.serialExpandido">[esconder]</span>
+            </a>
+          </td>
+          <td>{{contato.nome}}</td>
           <td>{{contato.operadora.codigo}}</td>
           <td>{{contato.telefone}}</td>
           <td>{{contato.operadora.nome | lowercase}}</td>
@@ -205,11 +109,22 @@
         />
         <select
           class="form-control"
+          name="operadora"
           ng-model="contato.operadora"
-          ng-options="operadora.nome for operadora in operadoras"
+          ng-options="operadora as (operadora.nome + ' (' + (operadora.preco | currency) + ')') for operadora in operadoras | orderBy:'nome'"
+          ng-required="true"
         >
           <option value="">Selecione uma operadora</option>
         </select>
+        <div ng-messages="contatoForm.operadora.$error">
+          <div
+            class="alert alert-danger"
+            ng-message="required"
+            ng-show="contatoForm.operadora.$dirty"
+          >
+            Selecione uma operadora!
+          </div>
+        </div>
       </form>
 
       <div ng-messages="contatoForm.nome.$error">
@@ -225,19 +140,21 @@
         </div>
       </div>
 
-      <div ng-messages="contatoForm.telefone.$error">
-        <div
-          class="alert alert-danger"
-          ng-message="require"
-          ng-show="contatoForm.nome.$dirty"
-        >
+      <div
+        ng-messages="contatoForm.telefone.$error"
+        ng-show="contatoForm.telefone.$dirty"
+      >
+        <div ng-message="required" class="alert alert-danger">
           Preencha o campo telefone!
         </div>
-        <div class="alert alert-danger" ng-show="minlength">
-          Preencha telefone corretamente com 11 dígitos!
+        <div ng-message="minlength" class="alert alert-danger">
+          Telefone deve ter 11 dígitos!
         </div>
-        <div class="alert alert-danger" ng-show="maxlength">
-          Preencha telefone corretamente com 11 dígitos!
+        <div ng-message="maxlength" class="alert alert-danger">
+          Telefone deve ter 11 dígitos!
+        </div>
+        <div ng-message="pattern" class="alert alert-danger">
+          Formato inválido! Use (XX) XXXXX-XXXX
         </div>
       </div>
       <button
@@ -255,6 +172,6 @@
         Apagar Contatos
       </button>
     </div>
-    <div ng-include="'footer.html'"></div>
+    <div ng-include="'app/view/footer.html'"></div>
   </body>
 </html>
