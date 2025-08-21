@@ -20,9 +20,9 @@ angular
             console.error("Erro ao carregar operadoras:", error);
             $scope.operadoras = [];
             $scope.message +=
-              "Erro ao carregar operadoras: " +
+              "Não foi possível carregar operadoras: " +
               error.status +
-              " - " +
+              " " +
               error.statusText +
               "\n";
           });
@@ -38,9 +38,9 @@ angular
             console.error("Erro ao carregar contatos:", error);
             $scope.contatos = [];
             $scope.message +=
-              "Erro ao carregar contatos: " +
+              "Não foi possível carregar contatos: " +
               error.status +
-              " - " +
+              " " +
               error.statusText +
               "\n";
           });

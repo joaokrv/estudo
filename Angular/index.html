@@ -13,37 +13,55 @@
       type="text/css"
       href="app/lib/bootstrap/css/bootstrap.css"
     />
+    <link rel="stylesheet" href="app/css/ui.css" />
     <link rel="stylesheet" href="app/css/app.css" />
+
     <script src="app/lib/angular/angular.js"></script>
     <script src="app/lib/angular/angular-locale_pt-br.js"></script>
     <script src="app/lib/angular/angular-messages.js"></script>
+
     <script src="app/js/app.js"></script>
+
     <script src="app/js/controllers/listaTelefonicaController.js"></script>
+
     <script src="app/js/directives/telefoneMaskDirective.js"></script>
+    <script src="app/js/directives/uiAlertDirective.js"></script>
+    <script src="app/js/directives/uiDateDirective.js"></script>
+
     <script src="app/js/services/contatosAPIService.js"></script>
     <script src="app/js/services/operadorasAPIService.js"></script>
     <script src="app/js/services/serialGeneratorService.js"></script>
+
     <script src="app/js/constant/configValue.js"></script>
     <script src="app/js/config/serialGeneratorConfig.js"></script>
+
+    <script src="app/js/filters/nameFilter.js"></script>
+    <script src="app/js/filters/elipsesFilter.js"></script>
   </head>
   <body ng-controller="listaTelefonicaController">
     <div class="jumbotron">
       <!-- <h4 ng-bind="app"></h4> -->
+
       <h3>{{app}}</h3>
+
+      <!-- {{$id}} -->
+      <!-- = descobre o escopo -->
+
+      <div
+        ui-alert
+        ng-show="message"
+        title="Ops, aconteceu um problema"
+        message="message"
+      >
+        {{message}}
+      </div>
+
       <input
         type="text"
         ng-model="criterioBusca"
         placeholder="O que está buscando"
         class="form-control"
       />
-
-      <div
-        class="alert alert-danger"
-        ng-show="message"
-        style="white-space: pre-line"
-      >
-        {{ message }}
-      </div>
 
       <table ng-show="contatos.length > 0" class="table">
         <tr>
@@ -68,7 +86,7 @@
               <span ng-if="contato.serialExpandido">[esconder]</span>
             </a>
           </td>
-          <td>{{contato.nome}}</td>
+          <td>{{contato.nome | nameFilter | elipsesFilter:10}}</td>
           <td>{{contato.operadora.codigo}}</td>
           <td>{{contato.telefone}}</td>
           <td>{{contato.operadora.nome | lowercase}}</td>
@@ -102,11 +120,22 @@
           name="telefone"
           ng-model="contato.telefone"
           ng-required="true"
-          ng-maxLength="15"
           ng-minLength="15"
           ng-pattern="/^\(\d{2}\) \d{5}-\d{4}$/"
           telefone-mask
         />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Data"
+          name="data"
+          ng-model="contato.data"
+          ng-required="true"
+          ng-minLength="10"
+          ng-pattern="/^\d{2}\/\d{2}\/d{4}$/"
+          ui-date
+        />
+
         <select
           class="form-control"
           name="operadora"
@@ -150,11 +179,23 @@
         <div ng-message="minlength" class="alert alert-danger">
           Telefone deve ter 11 dígitos!
         </div>
-        <div ng-message="maxlength" class="alert alert-danger">
-          Telefone deve ter 11 dígitos!
-        </div>
         <div ng-message="pattern" class="alert alert-danger">
           Formato inválido! Use (XX) XXXXX-XXXX
+        </div>
+      </div>
+
+      <div
+        ng-messages="contatoForm.data.$error"
+        ng-show="contatoForm.data.$dirty"
+      >
+        <div ng-message="required" class="alert alert-danger">
+          Preencha o campo data!
+        </div>
+        <div ng-message="minlength" class="alert alert-danger">
+          Data deve ter 8 dígitos!
+        </div>
+        <div ng-message="pattern" class="alert alert-danger">
+          Formato inválido! Use ddMMyyyy
         </div>
       </div>
       <button

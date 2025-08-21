@@ -32,7 +32,7 @@ const gerarSerial = () => {
 const contatos = [
   {
     id: 1,
-    nome: "Pedro",
+    nome: "Pedro Silva",
     telefone: "(11) 98877-1234",
     cor: "plum",
     data: new Date(),
@@ -41,7 +41,7 @@ const contatos = [
   },
   {
     id: 2,
-    nome: "João",
+    nome: "João Gomes",
     telefone: "(21) 99988-5678",
     cor: "red",
     data: new Date(),
@@ -50,7 +50,7 @@ const contatos = [
   },
   {
     id: 3,
-    nome: "Lucas",
+    nome: "Lucas Melo",
     telefone: "(31) 98765-4321",
     cor: "blue",
     data: new Date(),
@@ -59,7 +59,7 @@ const contatos = [
   },
   {
     id: 4,
-    nome: "Moisés",
+    nome: "Moisés Jesus",
     telefone: "(61) 99123-8765",
     cor: "green",
     data: new Date(),
